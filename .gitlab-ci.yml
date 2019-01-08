@@ -14,5 +14,6 @@ before_script:
 build:
   stage: build
   script:
+  - echo "Regimg $CI_REGISTRY_IMAGE"
   - docker build -t $IMAGE_TAG .
   - docker push $IMAGE_TAG
