@@ -9,7 +9,7 @@ variables:
   
 before_script:
   - docker info
-  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN git.fluidweb.de:5000
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.git.fluidweb.de
   
 build:
   stage: build
