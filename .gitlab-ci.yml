@@ -1,0 +1,18 @@
+image: docker:stable
+
+stages:
+  - build
+  
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  
+before_script:
+  - docker info
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN git.fluidweb.de:5000
+  
+build:
+  stage: build
+  script:
+  - docker build -t $IMAGE_TAG .
+  - docker push $IMAGE_TAG
