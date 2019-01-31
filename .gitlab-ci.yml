@@ -13,6 +13,8 @@ before_script:
   
 build:
   stage: build
+  only:
+  - latest
   script:
   - echo "Regimg $CI_REGISTRY_IMAGE"
   - docker build -t $IMAGE_TAG .
